@@ -7,9 +7,17 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
+                    <label for="Organ">Choose an Organ</label>
+                    <select name="Organ" id="Organ">
+                      <option value="Breast">Breast</option>
+                      <option value="Lung">Lung</option>
+                    </select>
                   </div>
                   <!-- /.box-body -->
                 </div>
+                <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+                <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+                <p><img id="output" width="200" /></p>
                 <!-- /.box -->
               </div>
             </div>';
@@ -64,4 +72,24 @@
         });
     }
   }
+  var loadFile = function(event) {                                // event triggered by onchange in html content
+	  var image = document.getElementById('output');
+	  image.src = URL.createObjectURL(event.target.files[0]);
+    //history.pushState(curOrgan, 'cancerdetection', URL);
+    
+    
+      $.ajax({
+        type: "POST",
+        url: "index.php",
+        data: { param: text}
+      }).done(function( o ) {
+        // do something
+        var curOrgan = document.getElementById('Organ');
+        //$(content) = $(content) + '<div>'+curOrgan+'</div>';
+        $(content).replaceWith($(content) + '<div>'+curOrgan+'</div>');
+        //alert($(content).filter('#Organ').html())
+      });
+      
+  };
+  
 </script>
