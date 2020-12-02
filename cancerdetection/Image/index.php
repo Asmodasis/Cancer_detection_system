@@ -86,9 +86,9 @@
         //var modelDriver =  '../../interface/driver.py'
         $.get(modelDriver, function(value) {
           if(value){
-            alert(curOrgan + "Model executed and has indicated a positive result for Cancer.")
+            alert(curOrgan + " Model executed and has indicated a positive result for Cancer.")
           }else{
-            alert(curOrgan + "Model executed and has not indicate a positive result for Cancer.")
+            alert(curOrgan + " Model executed and has not indicate a positive result for Cancer.")
           }
         })
         
