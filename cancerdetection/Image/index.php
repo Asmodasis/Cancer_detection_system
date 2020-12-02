@@ -75,19 +75,23 @@
   var loadFile = function(event) {                                // event triggered by onchange in html content
 	  var image = document.getElementById('output');
 	  image.src = URL.createObjectURL(event.target.files[0]);
-    //history.pushState(curOrgan, 'cancerdetection', URL);
-    
-    
+
+    var curOrgan = document.getElementById('Organ');
+
       $.ajax({
         type: "POST",
-        url: "index.php",
-        data: { param: text}
+        url: "C:/Users/Shawn Ray/Desktop/Code/Senior Project/interface/driver.py",
+        data: { param: (curOrgan),(FALSE),(image)}
       }).done(function( o ) {
-        // do something
-        var curOrgan = document.getElementById('Organ');
-        //$(content) = $(content) + '<div>'+curOrgan+'</div>';
-        $(content).replaceWith($(content) + '<div>'+curOrgan+'</div>');
-        //alert($(content).filter('#Organ').html())
+        //var modelDriver =  '../../interface/driver.py'
+        $.get(modelDriver, function(value) {
+          if(value){
+            alert(curOrgan + "Model executed and has indicated a positive result for Cancer.")
+          }else{
+            alert(curOrgan + "Model executed and has not indicate a positive result for Cancer.")
+          }
+        })
+        
       });
       
   };
