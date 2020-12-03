@@ -22,6 +22,7 @@
               </div>
             </div>';
   include('../master.php');
+
 ?>
 <!-- page script -->
 <script>
@@ -72,27 +73,44 @@
         });
     }
   }
+ 
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js">
+  /*====================================================================================
+    Required usage:
+                  npm install @tensorflow/tfjs
+  =====================================================================================*/
   var loadFile = function(event) {                                // event triggered by onchange in html content
 	  var image = document.getElementById('output');
 	  image.src = URL.createObjectURL(event.target.files[0]);
 
     var curOrgan = document.getElementById('Organ');
 
+
+    /*
       $.ajax({
-        type: "POST",
         url: "../../interface/driver.py",
-        data: { param: (curOrgan+"_Model.h5"),(FALSE),(image)}
-      }).done(function( o ) {
-        //var modelDriver =  '../../interface/driver.py'
-        $.get(modelDriver, function(value) {
-          if(value){
+        success: function(curOrgan,FALSE,image){
+          if(driver(curOrgan,FALSE,image)){
             alert(curOrgan + "Model executed and has indicated a positive result for Cancer.")
           }else{
             alert(curOrgan + "Model executed and has not indicate a positive result for Cancer.")
           }
-        })
-        
+        }
+      
+
       });
       
+
+    $command = escapeshellcmd('python ../../interface/driver.py');
+    $output = shell_exec($command);
+    if($output){
+            alert(curOrgan + "Model executed and has indicated a positive result for Cancer.")
+          }else{
+            alert(curOrgan + "Model executed and has not indicate a positive result for Cancer.")
+          }
+        }
+        */
   };
 </script>
