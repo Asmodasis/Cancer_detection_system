@@ -80,8 +80,8 @@
 
       $.ajax({
         type: "POST",
-        url: "C:/Users/Shawn Ray/Desktop/Code/Senior Project/interface/driver.py",
-        data: { param: (curOrgan),(FALSE),(image)}
+        url: "../../interface/driver.py",
+        data: { param: (curOrgan+"_Model.h5"),(FALSE),(image)}
       }).done(function( o ) {
         //var modelDriver =  '../../interface/driver.py'
         $.get(modelDriver, function(value) {
@@ -95,5 +95,4 @@
       });
       
   };
-  
 </script>
