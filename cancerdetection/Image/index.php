@@ -91,11 +91,20 @@
     /*
       $.ajax({
         url: "../../interface/driver.py",
+<<<<<<< HEAD
         success: function(curOrgan,FALSE,image){
           if(driver(curOrgan,FALSE,image)){
             alert(curOrgan + "Model executed and has indicated a positive result for Cancer.")
+=======
+        data: { param: (curOrgan+"_Model.h5"),(FALSE),(image)}
+      }).done(function( o ) {
+        //var modelDriver =  '../../interface/driver.py'
+        $.get(modelDriver, function(value) {
+          if(value){
+            alert(curOrgan + " Model executed and has indicated a positive result for Cancer.")
+>>>>>>> 66aa5fc17f5e68e9db5e4ecac26b203d1379ab13
           }else{
-            alert(curOrgan + "Model executed and has not indicate a positive result for Cancer.")
+            alert(curOrgan + " Model executed and has not indicate a positive result for Cancer.")
           }
         }
       
