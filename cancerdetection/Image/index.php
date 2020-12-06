@@ -15,9 +15,10 @@
                   </div>
                   <!-- /.box-body -->
                 </div>
-                <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+                <p><input type="file"  accept="image/*" name="image" id="file"   onchange="loadFile(event)" style="display: none;"></p>
                 <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
                 <p><img id="output" width="200" /></p>
+                <button onClick="runModel()"> Click here to run the model </button>
                 <!-- /.box -->
               </div>
             </div>';
@@ -74,52 +75,49 @@
     }
   }
  
-  </script>
-  
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js">
   /*====================================================================================
     Required usage:
                   npm install @tensorflow/tfjs
   =====================================================================================*/
   var loadFile = function(event) {                                // event triggered by onchange in html content
+
 	  var image = document.getElementById('output');
 	  image.src = URL.createObjectURL(event.target.files[0]);
 
-    var curOrgan = document.getElementById('Organ');
+  }
+</script>
 
 
-    /*
-      $.ajax({
-        url: "../../interface/driver.py",
-<<<<<<< HEAD
-        success: function(curOrgan,FALSE,image){
-          if(driver(curOrgan,FALSE,image)){
-            alert(curOrgan + "Model executed and has indicated a positive result for Cancer.")
-=======
-        data: { param: (curOrgan+"_Model.h5"),(FALSE),(image)}
-      }).done(function( o ) {
-        //var modelDriver =  '../../interface/driver.py'
-        $.get(modelDriver, function(value) {
-          if(value){
-            alert(curOrgan + " Model executed and has indicated a positive result for Cancer.")
->>>>>>> 66aa5fc17f5e68e9db5e4ecac26b203d1379ab13
-          }else{
-            alert(curOrgan + " Model executed and has not indicate a positive result for Cancer.")
-          }
-        }
-      
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js">
 
-      });
-      
+  var runModel = function(){
+    alert("TEST Model Ran")
 
-    $command = escapeshellcmd('python ../../interface/driver.py');
-    $output = shell_exec($command);
-    if($output){
-            alert(curOrgan + "Model executed and has indicated a positive result for Cancer.")
-          }else{
-            alert(curOrgan + "Model executed and has not indicate a positive result for Cancer.")
-          }
-        }
-        */
-  };
+    var whatOrgan = document.getElementById('Organ');             // The organ selected from the drop down
+    
+    var img_width = 200;                                          // The size of the images
+    var img_height = 200;
+                                                                  // Import the image as a tensor object
+    var im = await tf.keras.preprocessing.image.load_img(img,, grayscale=False, color_mode='rgb', target_size=(img_width, img_height));
+    var x = tf.keras.preprocessing.image.img_to_array(im);        // Convert the image to an array
+    //var x = tf.expand_dims(x, axis=0);                            
+
+    //var images = np.vstack([x]);
+
+    var isSemantic = FALSE;
+
+    if(isSemantic){                                               // If it is semantic, the semantic network will be run
+        var file = '../'+whatOrgan+'/'+whatOrgan+'_Model_Semantic.h5';
+        
+        var model = await tf.loadLayersModel(file);               // Load the model
+
+        return model.predict(x);  
+    }else{                                                         // Else a normal network will be applied
+        var file = '../'+whatOrgan+'/'+whatOrgan+'_Model.h5';
+        
+        var model = await tf.loadLayersModel(file);               // Load the model
+
+        alert(model.predict(x)); 
+    }
+  }
 </script>
