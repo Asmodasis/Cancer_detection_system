@@ -8,9 +8,9 @@ import sys
 
 #This function will require that Unix directory naming convention is applied, Directories start with a capital letter
 
-whatOrgan   = sys.argv[1]                               # The organ will be the first argument passed to the function
-isSemantic  = sys.argv[2]                               # The boolean value determining whether it is a semantic network
-img         = sys.argv[3]                               # The location of the image to be processed
+#whatOrgan   = sys.argv[1]                               # The organ will be the first argument passed to the function
+#isSemantic  = sys.argv[2]                               # The boolean value determining whether it is a semantic network
+#img         = sys.argv[3]                               # The location of the image to be processed
 #TODO: No error handling regarding the organ and image in question.
 
 def driver(whatOrgan, isSemantic, img):
