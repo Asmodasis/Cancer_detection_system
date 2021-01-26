@@ -101,8 +101,9 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/cancerdetection/doctor/create.php">Create Doctor</a></li>
-            <li><a href="/cancerdetection/doctor">All Doctors</a></li>
+            <li><a href="../doctor/create.php">Create Doctor</a></li>
+            <li><a href="../doctor/index.php">Index Doctors</a></li>
+            <li><a href="../doctor/update.php">Update Doctor</a></li>
           </ul>
         </li>
 		<li class="treeview">
@@ -112,8 +113,9 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/cancerdetection/nurse/create.php">Create Nurse</a></li>
-            <li><a href="/cancerdetection/nurse">All Nurses</a></li>
+            <li><a href="../nurse/create.php">Create Nurse</a></li>
+            <li><a href="../nurse/index.php">Index Nurses</a></li>
+            <li><a href="../nurse/update.php">Update Nurse</a></li>
           </ul>
 		<li class="treeview">
           <a href="#"><i class="fa fa-medkit"></i> <span>Patients</span>
@@ -122,8 +124,9 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/cancerdetection/patient/create.php">Create Patient</a></li>
-            <li><a href="/cancerdetection/patient">All Patients</a></li>
+            <li><a href="../patient/create.php">Create Patient</a></li>
+            <li><a href="../patient/index.php">Index Patients</a></li>
+            <li><a href="../patient/update.php">Update Patient</a></li>
           </ul>
         </li>
 		<li class="treeview">
@@ -133,8 +136,8 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/cancerdetection/image">Upload New Image</a></li>
-            <li><a href="/cancerdetection/image">Review Images</a></li>
+            <li><a href="../image">Upload New Image</a></li>
+            <li><a href="../image">Review Images</a></li>
           </ul>
         </li>
       </ul>

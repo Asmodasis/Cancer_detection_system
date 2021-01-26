@@ -15,10 +15,10 @@
                   </div>
                   <!-- /.box-body -->
                 </div>
-                <p><input type="file"  accept="image/*" name="image" id="file"   onchange="loadFile(event)" style="display: none;"></p>
+                <p><input type="file"  accept="image/*" name="image" id="file" onchange="loadFile(event)"  style="display: none;"></p>
                 <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
                 <p><img id="output" width="200" /></p>
-                <button onClick="runModel()"> Click here to run the model </button>
+                <button id = "modelButton" onclick="runModel(event)"> Click here to run the model </button>
                 <!-- /.box -->
               </div>
             </div>';
@@ -45,9 +45,14 @@
                 "</tr>";
             }
             $(response).appendTo($("#patients"));
+
+
+
         }
     });
   });
+  
+
   function Remove(id){
     var result = confirm("Are you sure you want to delete the patient record?"); 
     if (result == true) { 
@@ -74,50 +79,59 @@
         });
     }
   }
- 
-  /*====================================================================================
-    Required usage:
-                  npm install @tensorflow/tfjs
-  =====================================================================================*/
-  var loadFile = function(event) {                                // event triggered by onchange in html content
+
+
+  
+  function loadFile (event) {                                // event triggered by onchange in html content
 
 	  var image = document.getElementById('output');
 	  image.src = URL.createObjectURL(event.target.files[0]);
 
   }
-</script>
+  </script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js">
+  /*====================================================================================
+    Required usage:
+                  INSTALL: npm install @tensorflow/tfjs
+                  SCRIPT: <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js">
+                  NPM: import * as tf from '@tensorflow/tfjs';
+  =====================================================================================*/
 
+  async function runModel(event){
 
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js">
-
-  var runModel = function(){
-    alert("TEST Model Ran")
-
-    var whatOrgan = document.getElementById('Organ');             // The organ selected from the drop down
     
-    var img_width = 200;                                          // The size of the images
-    var img_height = 200;
-                                                                  // Import the image as a tensor object
-    var im = await tf.keras.preprocessing.image.load_img(img,, grayscale=False, color_mode='rgb', target_size=(img_width, img_height));
-    var x = tf.keras.preprocessing.image.img_to_array(im);        // Convert the image to an array
-    //var x = tf.expand_dims(x, axis=0);                            
-
-    //var images = np.vstack([x]);
-
-    var isSemantic = FALSE;
-
-    if(isSemantic){                                               // If it is semantic, the semantic network will be run
-        var file = '../'+whatOrgan+'/'+whatOrgan+'_Model_Semantic.h5';
+        alert("TEST Model Ran")
+      
+        var whatOrgan = document.getElementById('Organ');             // The organ selected from the drop down
         
-        var model = await tf.loadLayersModel(file);               // Load the model
-
-        return model.predict(x);  
-    }else{                                                         // Else a normal network will be applied
-        var file = '../'+whatOrgan+'/'+whatOrgan+'_Model.h5';
+        var img_width = 200;                                          // The size of the images
+        var img_height = 200;
+        import * as tf from '@tensorflow/tfjs-node'
+                                                                      // Import the image as a tensor object
+      /*
+        var im = tf.keras.preprocessing.image.load_img(img,, grayscale=False, color_mode='rgb', target_size=(img_width, img_height));
         
-        var model = await tf.loadLayersModel(file);               // Load the model
+        var x = tf.keras.preprocessing.image.img_to_array(im);        // Convert the image to an array
+        //var x = tf.expand_dims(x, axis=0);                            
 
-        alert(model.predict(x)); 
-    }
+        //var images = np.vstack([x]);
+
+        var isSemantic = FALSE;
+
+        if(isSemantic){                                               // If it is semantic, the semantic network will be run
+            var file = '../'+whatOrgan+'/'+whatOrgan+'_Model_Semantic.h5';
+            
+            var model = await tf.loadLayersModel(file);               // Load the model
+
+            return model.predict(x);  
+        }else{                                                         // Else a normal network will be applied
+            var file = '../'+whatOrgan+'/'+whatOrgan+'_Model.h5';
+            
+            var model = await tf.loadLayersModel(file);               // Load the model
+
+            alert(model.predict(x)); 
+        }
+        */
   }
+  
 </script>
