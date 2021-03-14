@@ -79,8 +79,10 @@
         });
     }
   }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
 
-
+<script>
   
   function loadFile (event) {                                // event triggered by onchange in html content
 
@@ -88,7 +90,46 @@
 	  image.src = URL.createObjectURL(event.target.files[0]);
 
   }
+    console.log("Model");
+  $("#modelButton").click(runModel);
   
+  async function runModel(event){
+	//import * as tf from '@tensorflow/tfjs-node'
+        //alert("TEST Model Ran")
+      	//const b = tf.tensor([1, 2, 3, 4], [2, 2]);
+      	//console.log('shape: ', b.shape);
+        var whatOrgan = document.getElementById('Organ').value;             // The organ selected from the drop down	[.value gives us the organ's name, instead of "organ"]
+        console.log(whatOrgan);
+        var img_width = 200;                                          // The size of the images
+        var img_height = 200;
+        
+        //trialing out run on image
+        //var image = document.getElementById('output');
+	////image.src = URL.createObjectURL(event.target.files[0]);
+                                                                      // Import the image as a tensor object
+        //these tf.keras lines don't seem to work
+        //var im = tf.keras.preprocessing.image.load_img(img, grayscale=False, color_mode='rgb', target_size=(img_width, img_height));
+      	//var x = tf.keras.preprocessing.image.img_to_array(im);        // Convert the image to an array
+        //var x = tf.expand_dims(x, axis=0);                            
+        //var images = np.vstack([x]);
+
+        var isSemantic = 0;
+
+        if(isSemantic){                                               // If it is semantic, the semantic network will be run
+            var file = '../'+whatOrgan+'/'+whatOrgan+'_Model_Semantic.h5';
+            
+            var model = await tf.loadLayersModel(file);               // Load the model
+
+            return model.predict(x);  
+        }else{                     //changed folder format            // Else a normal network will be applied
+            var file = whatOrgan+'_model/model.json';
+            
+            var model = await tf.loadLayersModel(file);               // Load the model
+
+            alert(model.predict(image)); 
+        }
+        
+  }
   
   //====================================================================================
   //  Required usage:
@@ -98,44 +139,5 @@
   //=====================================================================================
   
   </script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js">
-  console.log("Model");
-  $("#modelButton").click(runModel);
   
-  async function runModel(event){
-	import * as tf from '@tensorflow/tfjs-node'
-        alert("TEST Model Ran")
-      
-        var whatOrgan = document.getElementById('Organ');             // The organ selected from the drop down
-        
-        var img_width = 200;                                          // The size of the images
-        var img_height = 200;
-        
-                                                                      // Import the image as a tensor object
-      
-        var im = tf.keras.preprocessing.image.load_img(img, grayscale=False, color_mode='rgb', target_size=(img_width, img_height));
-        
-        var x = tf.keras.preprocessing.image.img_to_array(im);        // Convert the image to an array
-        //var x = tf.expand_dims(x, axis=0);                            
-
-        //var images = np.vstack([x]);
-
-        var isSemantic = FALSE;
-
-        if(isSemantic){                                               // If it is semantic, the semantic network will be run
-            var file = '../'+whatOrgan+'/'+whatOrgan+'_Model_Semantic.h5';
-            
-            var model = await tf.loadLayersModel(file);               // Load the model
-
-            return model.predict(x);  
-        }else{                                                         // Else a normal network will be applied
-            var file = whatOrgan+'/'+whatOrgan+'_Model.h5';
-            
-            var model = await tf.loadLayersModel(file);               // Load the model
-
-            alert(model.predict(x)); 
-        }
-        
-  }
-  
-</script>
+ 
