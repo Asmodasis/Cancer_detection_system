@@ -103,7 +103,7 @@
   $("#modelButton").click(runModel);
   
   async function runModel(event){
-	//import * as tf from '@tensorflow/tfjs-node'
+	import * as tf from '@tensorflow/tfjs-node'
         alert("TEST Model Ran")
       
         var whatOrgan = document.getElementById('Organ');             // The organ selected from the drop down
