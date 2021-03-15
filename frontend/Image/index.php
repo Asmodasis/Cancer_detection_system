@@ -114,19 +114,30 @@
         //var images = np.vstack([x]);
 
         var isSemantic = 0;
-
+        var image = document.getElementById('output');
         if(isSemantic){                                               // If it is semantic, the semantic network will be run
             var file = '../'+whatOrgan+'/'+whatOrgan+'_Model_Semantic.h5';
             
-            var model = await tf.loadLayersModel(file);               // Load the model
+            var model = tf.loadLayersModel(file);               // Load the model
 
             return model.predict(x);  
         }else{                     //changed folder format            // Else a normal network will be applied
+          
             var file = whatOrgan+'_model/model.json';
             
-            var model = await tf.loadLayersModel(file);               // Load the model
+            var model = tf.loadLayersModel(file);               // Load the model
+            
+            
+            //var tensorImg = new ImageData(image);
+            //alert(image);
+            var tensorImg = tf.browser.fromPixels(image); //.resizeNearestNeighbor([50, 50]).toFloat().expandDims();
+            //alert("{TEST} print after tensorImg");
+            alert(model);
+            var prediction = await model.predict(tensorImg);
 
-            alert(model.predict(image)); 
+            
+
+            //alert(tensorImg.print()); 
         }
         
   }
