@@ -125,22 +125,15 @@
           
             var file = whatOrgan+'_model/model.json';
             
-            
+            var model = tf.loadLayersModel(file);               // Load the model
             
             
             //var tensorImg = new ImageData(image);
             //alert(image);
-            var tensorImg = tf.browser.fromPixels(image).resizeNearestNeighbor([50, 50]).toFloat().expandDims();
+            var tensorImg = tf.browser.fromPixels(image); //.resizeNearestNeighbor([50, 50]).toFloat().expandDims();
             //alert("{TEST} print after tensorImg");
-            let model = tf.loadLayersModel(file);               // Load the model
-            //alert(model);
-            model.then(function(res) {
-            	//console.log(tensorImg);
-           	var prediction = res.predict(tensorImg);
-           	console.log(prediction);
-           }, function (err) {
-           	console.log(err);
-           });
+            alert(model);
+            var prediction = await model.predict(tensorImg);
 
             
 
