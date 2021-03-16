@@ -125,15 +125,38 @@
           
             var file = whatOrgan+'_model/model.json';
             
-            var model = tf.loadLayersModel(file);               // Load the model
             
             
-            //var tensorImg = new ImageData(image);
-            //alert(image);
-            var tensorImg = tf.browser.fromPixels(image); //.resizeNearestNeighbor([50, 50]).toFloat().expandDims();
-            //alert("{TEST} print after tensorImg");
-            alert(model);
-            var prediction = await model.predict(tensorImg);
+            
+           
+           // var tensorImg = tf.browser.fromPixels(image).resizeNearestNeighbor([50, 50]).toFloat().expandDims();
+            var tensorImg = tf.browser.fromPixels(image)
+
+            var resized = tf.image.resizeBilinear(tensorImg, [50, 50]).toFloat()
+
+            var offset = tf.scalar(255.0);
+            var normalized = resized.sub(offset).div(offset);
+
+            var batched = normalized.expandDims(0)
+            
+            
+            let model = tf.loadLayersModel(file);               // Load the model
+            //alert(model);
+            model.then(function(res) {
+            	//console.log(tensorImg);
+           	var prediction = res.predict(batched);
+           	  console.log(prediction);
+                if(prediction.dataSync()[1] > 5.0e-30){            // non-cancerous
+                  alert("The model has indicated the image is noncancerous.");
+                }else{
+                  alert("The model has indicated the image is cancerous.");
+                }
+
+              //alert(prediction.dataSync()[1]);
+
+            }, function (err) {
+           	console.log(err);
+           });
 
             
 
