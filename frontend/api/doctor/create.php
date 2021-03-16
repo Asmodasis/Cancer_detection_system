@@ -14,9 +14,7 @@ $doctor = new Doctor($db);
 // set doctor property values
 $doctor->name = $_POST['name'];
 $doctor->email = $_POST['email'];
-$doctor->password = base64_encode($_POST['password']);
-$doctor->phone = $_POST['phone'];
-$doctor->specialist = $_POST['specialist'];
+$doctor->password = password_hash(($_POST['password']),PASSWORD_DEFAULT);
 $doctor->created = date('Y-m-d H:i:s');
 
 // create the doctor

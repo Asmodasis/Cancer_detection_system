@@ -38,7 +38,7 @@
                   <!-- /.box -->
                 </div>
               </div>';
-  include('../master.php');
+  include('../master_DN.php');
 ?>
 <script>
   function AddNurse(){
@@ -60,7 +60,7 @@
             success: function (result) {
                 if (result['status'] == true) {
                     alert("Successfully Added New Nurse!");
-                    window.location.href = '/medibed/nurse';
+                    window.location.href = '/cancer_detection_system/frontend/Nurse/index.php';
                 }
                 else {
                     alert(result['message']);
