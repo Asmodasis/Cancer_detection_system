@@ -1,9 +1,9 @@
 <html>
   <body>
     Name:
-    <?php echo $_POST["Username"]; ?><br />
+    <?php echo $_POST["email"]; ?><br />
     Password:
-    <?php echo $_POST["Password"]; ?><br />
+    <?php echo $_POST["password"]; ?><br />
     Job:
     <?php $job = $_POST["job"];
     echo $job; 

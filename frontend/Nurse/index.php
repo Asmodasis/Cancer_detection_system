@@ -33,7 +33,7 @@
                 <!-- /.box -->
               </div>
             </div>';
-  include('../master.php');98
+  include('../master_DN.php');98
 ?>
 <!-- page script -->
 <script>
@@ -73,7 +73,7 @@
             success: function (result) {
                 if (result['status'] == true) {
                     alert("Successfully Removed Nurse!");
-                    window.location.href = '/medibed/nurse';
+                    window.location.href = '/cancer_detection_system/frontend/Doctor/index.php';
                 }
                 else {
                     alert(result['message']);
