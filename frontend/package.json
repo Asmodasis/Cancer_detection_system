@@ -1,0 +1,12 @@
+{
+  "name": "@tensorflow/tfjs",
+  "version": "1.0.0",
+  "description": "Tensorflow.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shawn Ray",
+  "license": "ISC",
+  "keywords": []
+}
