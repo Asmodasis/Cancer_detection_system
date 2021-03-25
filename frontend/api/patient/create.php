@@ -15,9 +15,9 @@ $patient = new Patient($db);
 $patient->name = $_POST['name'];
 $patient->phone = $_POST['phone'];
 $patient->gender = $_POST['gender'];
-$patient->health_condition  = $_POST['health_condition'];
-$patient->doctor_id = $_POST['doctor id'];
-$patient->nurse_id = $_POST['nurse id'];
+$patient->health_condition = $_POST['health_condition'];
+$patient->doctor_id = $_POST['doctor_id'];
+$patient->nurse_id = $_POST['nurse_id'];
 $patient->created = date('Y-m-d H:i:s');
 
 // create the patient
@@ -31,7 +31,7 @@ if($patient->create()){
         "gender" => $patient->gender,
 		"health_condition" => $patient->health_condition,
 		"doctor_id" => $patient->doctor_id,
-		"patient_id" => $patient->nurse_id
+		"nurse_id" => $patient->nurse_id
     );
 }
 else{

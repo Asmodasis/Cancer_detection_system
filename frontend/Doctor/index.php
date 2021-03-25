@@ -35,7 +35,7 @@
                 <!-- /.box -->
               </div>
             </div>';
-  include('../master.php');
+  include('../master_DN.php');
 ?>
 <!-- page script -->
 <script>
@@ -76,7 +76,7 @@
             success: function (result) {
                 if (result['status'] == true) {
                     alert("Successfully Removed Doctor!");
-                    window.location.href = '/cancerdetection/doctor';
+                    window.location.href = '/cancer_detection_system/frontend/Doctor/index.php';
                 }
                 else {
                     alert(result['message']);

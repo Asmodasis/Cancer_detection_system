@@ -78,11 +78,11 @@
             },
         });
     });
-    function UpdateNurse(){
+    function UpdatePatient(){
         $.ajax(
         {
             type: "POST",
-            url: '../api/nurse/update.php',
+            url: '../api/patient/update.php',
             dataType: 'json',
             data: {
                 id: <?php echo $_GET['id']; ?>,
@@ -98,8 +98,8 @@
             },
             success: function (result) {
                 if (result['status'] == true) {
-                    alert("Successfully Updated Nurse!");
-                    window.location.href = '/medibed/nurse';
+                    alert("Successfully Updated Patient!");
+                    window.location.href = '/cancer_detection_system/frontend/Patient/index.php';
                 }
                 else {
                     alert(result['message']);

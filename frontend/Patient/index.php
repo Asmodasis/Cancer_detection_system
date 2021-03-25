@@ -58,6 +58,7 @@
                 "<td>"+data[user].health_condition+"</td>"+
 				"<td>"+data[user].doctor_id+"</td>"+
 				"<td>"+data[user].nurse_id+"</td>"+
+				"<td><a href='update.php?id="+data[user].id+"'>Edit</a> | <a href='#' onClick=Remove('"+data[user].id+"')>Remove</a></td>"+
                 "</tr>";
             }
             $(response).appendTo($("#patients"));
@@ -81,7 +82,7 @@
             success: function (result) {
                 if (result['status'] == true) {
                     alert("Successfully Removed Patient!");
-                    window.location.href = '/medibed/patient';
+                    window.location.href = '/cancer_detection_system/frontend/Patient/index.php';
                 }
                 else {
                     alert(result['message']);

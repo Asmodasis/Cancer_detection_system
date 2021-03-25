@@ -10,7 +10,7 @@ class Patient{
     public $name;
 	public $phone;
     public $gender;
-	public $health_conditon;
+	public $health_condition;
 	public $doctor_id;
 	public $nurse_id;
     public $created;
@@ -25,7 +25,7 @@ class Patient{
     
         // select all query
         $query = "SELECT
-                    `id`, `name`, `phone`, `gender`, `health_conditon`, `doctor_id`, `nurse_id`, `created`
+                    `id`, `name`, `phone`, `gender`, `health_condition`, `doctor_id`, `nurse_id`, `created`
                 FROM
                     " . $this->table_name . " 
                 ORDER BY
@@ -45,7 +45,7 @@ class Patient{
     
         // select all query
         $query = "SELECT
-                    `id`, `name`, `phone`, `gender`, `health_conditon`, `doctor_id`, `nurse_id`, `created`
+                    `id`, `name`, `phone`, `gender`, `health_condition`, `doctor_id`, `nurse_id`, `created`
                 FROM
                     " . $this->table_name . " 
                 WHERE
@@ -68,9 +68,9 @@ class Patient{
         
         // query to insert record
         $query = "INSERT INTO  ". $this->table_name ." 
-                        (`name`, `phone`, `gender`, `health_conditon`, `doctor_id`, `nurse_id`, `created`)
+                        (`name`, `phone`, `gender`, `health_condition`, `doctor_id`, `nurse_id`, `created`)
                   VALUES
-                        ('".$this->name."', '".$this->phone."', '".$this->gender."', '".$this->health_conditon."', '".$this->doctor_id."', '".$this->nurse_id."', '".$this->created."')";
+                        ('".$this->name."', '".$this->phone."', '".$this->gender."', '".$this->health_condition."', '".$this->doctor_id."', '".$this->nurse_id."', '".$this->created."')";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -91,7 +91,7 @@ class Patient{
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                    name='".$this->name."', phone='".$this->phone."', gender='".$this->gender."', health_conditon='".$this->health_conditon."', doctor_id='".$this->doctor_id."', nurse_id='".$this->nurse_id."'
+                    name='".$this->name."', phone='".$this->phone."', gender='".$this->gender."', health_condition='".$this->health_condition."', doctor_id='".$this->doctor_id."', nurse_id='".$this->nurse_id."'
                 WHERE
                     id='".$this->id."'";
     

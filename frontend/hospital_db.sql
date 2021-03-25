@@ -14,8 +14,13 @@ CREATE TABLE `admins` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `phone` varchar(15) NOT NULL,
+  `role` bit NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+INSERT INTO `admins` (`id`, `name`, `email`, `password`, `phone`, `role`, `created`) VALUES
+(1, 'admin', 'mhernandez@nevada.unr.edu', 'admin1', '17148334897', '1', '2020-11-21 13:12:18');
 -- --------------------------------------------------------
 --
 -- Table structure for table `doctors`
@@ -27,13 +32,14 @@ CREATE TABLE `doctors` (
   `password` varchar(255) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `specialist` varchar(255) NOT NULL,
+  `role` bit NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
--- Dumping data for table `doctors`
+-- Create first doctor into doctors table
 --
-INSERT INTO `doctors` (`id`, `name`, `email`, `password`, `phone`, `specialist`, `created`) VALUES
-(1, 'Test Doctor', 'testdoctor@gmail.com', 'password', '17758888886', 'Heart', '2020-11-21 13:12:18');
+INSERT INTO `doctors` (`id`, `name`, `email`, `password`, `phone`, `specialist`, `role`,`created`) VALUES
+(1, 'Test Doctor', 'testdoctor@gmail.com', 'password', '17758888886', 'Heart', '0', '2020-11-21 13:12:18');
 -- --------------------------------------------------------
 --
 -- Table structure for table `nurses`
@@ -44,13 +50,14 @@ CREATE TABLE `nurses` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `phone` varchar(15) NOT NULL,
+  `role` bit NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
--- Dumping data for table `nurses`
+-- Create first nurse into nurse table
 --
-INSERT INTO `nurses` (`id`, `name`, `email`, `password`, `phone`, `created`) VALUES
-(1, 'Test Nurse', 'testnurse@gmail.com', 'password', '17758888887', '2020-11-21 13:12:18');
+INSERT INTO `nurses` (`id`, `name`, `email`, `password`, `phone`, `role`, `created`) VALUES
+(1, 'Test Nurse', 'testnurse@gmail.com', 'password', '17758888887', '0', '2020-11-21 13:12:18');
 -- --------------------------------------------------------
 --
 -- Table structure for table `patients`
@@ -66,7 +73,7 @@ CREATE TABLE `patients` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
--- Dumping data for table `patients`
+-- Create first patient in patients table
 --
 INSERT INTO `patients` (`id`, `name`, `phone`, `gender`, `health_condition`, `doctor_id`, `nurse_id`, `created`) VALUES
 (1, 'Test Patient', '17758888888', 1, 'Breast Cancer', 1, 1, '2020-11-21 13:12:18');

@@ -35,8 +35,8 @@
                             </div>
 						</div>
 						<div class="form-group">
-                          <label for="exampleHealthCondition1">Health condition</label>
-                          <input type="text" class="form-control" id="hal" placeholder="Enter Health Condition">
+                          <label for="exampleHealthCondition1">Health Condition</label>
+                          <input type="text" class="form-control" id="health_condition" placeholder="Enter Health Condition">
                         </div>
                         <div class="form-group">
                           <label for="exampleDoctorID1">Doctor ID</label>
@@ -70,7 +70,7 @@
                 name: $("#name").val(),
 				phone: $("#phone").val(),
 				gender: $("input[name='gender']:checked").val(),
-				health_conditon: $("#health_conditon").val(),
+				health_condition: $("#health_condition").val(),
                 doctor_id: $("#doctor_id").val(),
 				nurse_id: $("#nurse_id").val(),
             },
@@ -80,7 +80,7 @@
             success: function (result) {
                 if (result['status'] == true) {
                     alert("Successfully Added New Patient!");
-                    window.location.href = '/medibed/patient';
+                    window.location.href = '/cancer_detection_system/frontend/Patient/index.php';
                 }
                 else {
                     alert(result['message']);

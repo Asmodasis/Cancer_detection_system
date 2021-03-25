@@ -38,7 +38,7 @@
                 </div>
               </div>';
               
-  include('../master.php');
+  include('../master_DN.php');
 ?>
 <script>
     $(document).ready(function(){
@@ -76,7 +76,7 @@
             success: function (result) {
                 if (result['status'] == true) {
                     alert("Successfully Updated Nurse!");
-                    window.location.href = '/medibed/nurse';
+                    window.location.href = '/cancer_detection_system/frontend/Doctor/index.php';
                 }
                 else {
                     alert(result['message']);

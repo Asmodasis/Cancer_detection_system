@@ -47,7 +47,7 @@
               <!-- The user image in the navbar-->
               <img src="../dist/img/avatar5.png" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">USERNAME</span>
+              <span class="hidden-xs">USERNAME DN</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -61,7 +61,7 @@
               <li class="user-footer">
                 <div class="row">
 					<div class = "center-block" style = "width:70px; background-color:#ccc;">
-						<a href="#" class="btn btn-default btn-flat">Sign out</a>
+						<a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
 					</div>
                 </div>
               </li>
@@ -101,7 +101,6 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../doctor/create.php">Create Doctor</a></li>
             <li><a href="../doctor/index.php">Index Doctors</a></li>
           </ul>
         </li>
@@ -112,7 +111,6 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../nurse/create.php">Create Nurse</a></li>
             <li><a href="../nurse/index.php">Index Nurses</a></li>
           </ul>
 		<li class="treeview">

@@ -29,7 +29,7 @@ if($num>0){
 			"gender" => $gender,
             "health_condition" => $health_condition,
             "doctor_id" => $doctor_id,
-            "nurse_id" => $patient_id,
+            "nurse_id" => $nurse_id,
             "created" => $created
         );
         array_push($patients_arr["patients"], $patient_item);
