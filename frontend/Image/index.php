@@ -17,8 +17,9 @@
                 </div>
                 <p><input type="file"  accept="image/*" name="image" id="file" onchange="loadFile(event)"  style="display: none;"></p>
                 <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-                <p><img id="output" width="200" /></p>
+                <p><img id="output" width="200" height="200"/></p>
                 <button id = "modelButton"> Click here to run the model </button>
+                <p id="output_text" style="margin-top:10px;"></p>
                 <!-- /.box -->
               </div>
             </div>';
@@ -147,9 +148,11 @@
            	var prediction = res.predict(batched);
            	  console.log(prediction);
                 if(prediction.dataSync()[1] > 5.0e-30){            // non-cancerous
-                  alert("The model has indicated the image is noncancerous.");
+                  document.getElementById('output_text').innerHTML = "The model has indicated the image is noncancerous.";
+                  //alert("The model has indicated the image is noncancerous.");
                 }else{
-                  alert("The model has indicated the image is cancerous.");
+                  document.getElementById('output_text').innerHTML = "The model has indicated the image is cancerous.";
+                  //alert("The model has indicated the image is cancerous.");
                 }
 
               //alert(prediction.dataSync()[1]);
@@ -174,4 +177,5 @@
   
   </script>
   
+ 
  
