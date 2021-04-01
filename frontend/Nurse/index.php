@@ -33,7 +33,7 @@
                 <!-- /.box -->
               </div>
             </div>';
-  include('../master_DN.php');98
+  include('../master_admin.php');
 ?>
 <!-- page script -->
 <script>

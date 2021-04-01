@@ -1,0 +1,157 @@
+/*Master style sheet for Cancer Detection Page*/
+
+body {
+	height: auto;
+	width: auto;
+	background-color: #8d9093;
+}
+
+#main {
+	transition: margin-left .5s;
+}
+/*******************Top Of Page**************************/
+.container {
+	display:grid;
+	grid-template-columns: 1fr;
+}
+.wrapper-top {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	align-items: center;
+	background-color: #C0C0C0;
+}
+
+.wrapper-top-left-logo {
+	float: left;
+}
+.wrapper-top-left-name {
+	width: 65%;
+	margin-right: 125px;
+	margin-left: 40px;
+	float: left;
+	font-size: 40px;
+}
+
+.wrapper-top-right-logout{
+	float: right;
+	text-align: right;
+	width: 10%;
+	margin-right: 30px;
+}
+
+/*****************NAVIGATION BAR STYLING*****************/
+.navbar {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #C0C0C0;
+	overflow-x: hidden;
+	padding-top: 60px;
+	transition: 0.5s;
+}
+
+.navbar a, .dropdown-button {
+  padding: 6px 6px 6px 16px;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+navbar a:hover, .dropdown-button:hover {
+  color: #f1f1f1;
+}
+
+.navbar a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 20px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.navbar a:hover{
+	color: #f1f1f1;
+}
+
+/*Navbar button (three lines on top of eachother)*/
+.nav-bar {
+	float: left;
+	margin-left: 10px;
+
+}
+
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.active {
+	color: white;
+	transition: 0.5s;
+}
+
+.dropdown-container {
+	display: none;
+	background-color: #C0C0C0;
+	padding-left: 8px;
+
+}
+
+
+@media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
+}
+
+/**************************DISPLAY LIST STYLING******************************/
+.display-list {
+	margin-left: 60px;
+	background-color:white;
+	height: 500px;
+}
+
+/*****************************LOGIN PAGE*************************************/
+input[type=text], input[type=password] {
+
+	padding: 12px 20px;
+	width: 40%;
+	margin: 8px 0;
+	display: block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	margin-left: 30%;
+	text-align: center;
+}
+
+button {
+	background-color: #C0C0C0;
+	color: white;
+	padding: 14px 20px;
+	margin-left: 30%;
+	border: none;
+	cursor: pointer;
+	width: 40%;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+.container-login {
+	padding: 24px;
+}
+.image-container {
+	text-align: center;
+	margin: 24px 0 12px 0;
+}
