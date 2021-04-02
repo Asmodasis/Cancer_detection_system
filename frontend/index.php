@@ -97,7 +97,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       name="description"
       content="2021 UNR Senior Project Website for Group 14"
     />
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="style_login.css">
   </head>
   <body>
     <!--form class="input" action="test.php" method="post">-->
