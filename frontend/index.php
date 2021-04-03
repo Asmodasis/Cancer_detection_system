@@ -63,18 +63,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
-                            $_SESSION["email"] = $email;                            
+                            $_SESSION["email"] = $email;                           
                             
                             // Redirect user to welcome page
                             header("Location: doctor/index.php");
                         } else{
                             // Display an error message if password is not valid
-                            $password_err = "The password you entered was not valid.";
+                            $password_err = "Username or Password is incorrect";
                         }
                     }
                 } else{
                     // Display an error message if email doesn't exist
-                    $email_err = "No account found with that email.";
+                    $email_err = "Username or Password is incorrect";
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -84,6 +84,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_close($stmt);
         }
     }
+<<<<<<< Updated upstream
     if(!empty($email_err) && !empty($password_err)){
         echo $email_err;
         echo "<br>";
@@ -96,6 +97,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo $password_err;
     }
 
+=======
+    echo $email_err;
+>>>>>>> Stashed changes
     // Close connection
     mysqli_close($link);
 }
@@ -127,6 +131,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   </head>
   <body>
     <!--form class="input" action="test.php" method="post">-->
+<<<<<<< Updated upstream
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
       Email:
       <input type="text" name="email" placeholder="email" class="form-control" />
@@ -137,5 +142,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       <br />
       <input type="submit" class="btn btn-primary" value="Login">
     </form>
+=======
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+			<div class = "image-container">
+				<img src = "UNR_logo.png" alt = "Avatar" class = "avatar" width = "250" height = "250">
+			</div>
+            <div class = "project-title">
+                Cancer Detection Using Deep Neural Networks <br></div>
+            <div class = "project-subtitle">
+                UNR CSE Department, Spring 2021 <br>
+                </div>
+			<div class = "login-container">
+				<input type="text" name="email" placeholder="Enter Email" name = "email" required />
+				<input type="password" name="password" placeholder="Enter Password" name = "password" required />
+				<button type="submit">Login</button>
+			<div>
+		</form>
+>>>>>>> Stashed changes
   </body>
 </html>

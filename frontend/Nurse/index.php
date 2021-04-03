@@ -7,7 +7,7 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
-                    <table id="nurses" class="table table-bordered table-hover">
+                    <table id="nurses" class="table table-bordered table-hover" cellspacing="10">
                       <thead>
                       <tr>
                         <th>Name</th>

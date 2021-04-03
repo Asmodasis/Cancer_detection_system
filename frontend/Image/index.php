@@ -147,9 +147,17 @@
            	var prediction = res.predict(batched);
            	  console.log(prediction);
                 if(prediction.dataSync()[1] > 5.0e-30){            // non-cancerous
+<<<<<<< Updated upstream
                   alert("The model has indicated the image is noncancerous.");
                 }else{
                   alert("The model has indicated the image is cancerous.");
+=======
+                  document.getElementById('output_text').innerHTML = "The model has indicated the image is noncancerous. \nCurrent model accuracy: 90%.";
+                  //alert("The model has indicated the image is noncancerous.");
+                }else{
+                  document.getElementById('output_text').innerHTML = "The model has indicated the image is cancerous. \nCurrent model accuracy: 90%.";
+                  //alert("The model has indicated the image is cancerous.");
+>>>>>>> Stashed changes
                 }
 
               //alert(prediction.dataSync()[1]);
