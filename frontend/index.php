@@ -54,7 +54,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     // Bind result variables
                     mysqli_stmt_bind_result($stmt, $id, $email, $hashed_password);
                     if(mysqli_stmt_fetch($stmt)){
-						echo "validating creds";
                         if(password_verify($password, $hashed_password)){
 							echo "validating creds1";
                             // Password is correct, so start a new session
@@ -98,33 +97,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       name="description"
       content="2021 UNR Senior Project Website for Group 14"
     />
-    <title>Group 14</title>
-    <style>
-      input[type="text"] {
-        padding: 10px;
-        margin: 10px 0;
-        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-        border-radius: 25px;
-      }
-      input[type="password"] {
-        padding: 10px;
-        margin: 10px 0;
-        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-        border-radius: 25px;
-      }
-    </style>
+	<link rel="stylesheet" href="style_login.css">
   </head>
   <body>
     <!--form class="input" action="test.php" method="post">-->
-	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-      Email:
-      <input type="text" name="email" placeholder="email" class="form-control" />
-      <br />
-      Password:
-      <input type="password" name="password" placeholder="password" class="form-control"/><br />
-
-      <br />
-      <input type="submit" class="btn btn-primary" value="Login">
-    </form>
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+			<div class = "image-container">
+				<img src = "UNR_logo.png" alt = "Avatar" class = "avatar" width = "250" height = "250">
+			</div>
+			<div class = "login-container">
+				<input type="text" name="email" placeholder="Enter Email" name = "email" required />
+				<input type="password" name="password" placeholder="Enter Password" name = "password" required />
+				<button type="submit">Login</button>
+			<div>
+		</form>
   </body>
 </html>

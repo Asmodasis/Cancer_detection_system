@@ -1,0 +1,44 @@
+/*Master style sheet for Cancer Detection Page*/
+
+body {
+	height: auto;
+	width: auto;
+	background-color: #8d9093;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/*****************************LOGIN PAGE*************************************/
+input[type=text], input[type=password] {
+
+	padding: 12px 20px;
+	width: 40%;
+	margin: 8px 0;
+	display: block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	margin-left: 30%;
+	text-align: center;
+	border-radius: 5px;
+}
+
+button {
+	background-color: #C0C0C0;
+	color: white;
+	padding: 14px 20px;
+	margin-left: 30%;
+	border: none;
+	cursor: pointer;
+	width: 40%;
+	border-radius: 5px;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+.container-login {
+	padding: 24px;
+}
+.image-container {
+	text-align: center;
+	margin: 24px 0 12px 0;
+}

@@ -38,7 +38,7 @@
                 </div>
               </div>';
               
-  include('../master_DN.php');
+  include('../master_admin.php');
 ?>
 <script>
     $(document).ready(function(){

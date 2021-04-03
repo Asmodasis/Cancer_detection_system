@@ -23,7 +23,7 @@
                 <!-- /.box -->
               </div>
             </div>';
-  include('../master.php');
+  include('../master_admin.php');
 
 ?>
 <!-- page script -->
