@@ -7,21 +7,30 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
-                    <table id="patients" class="table table-bordered table-hover" cellspacing="10">
+                    <table id="patients" class="table table-bordered table-hover">
                       <thead>
                       <tr>
                         <th>Name</th>
                         <th>Phone</th>
-						            <th>Gender</th>
-					            	<th>Health Condition</th>
-						            <th>Doctor ID</th>
-					            	<th>Nurse ID</th>
+						<th>Gender</th>
+						<th>Health Condition</th>
+						<th>Doctor ID</th>
+						<th>Nurse ID</th>
                         <th>Action</th>
                       </tr>
                       </thead>
                       <tbody>
                       </tbody>
                       <tfoot>
+                      <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+						<th>Gender</th>
+						<th>Health Condition</th>
+						<th>Doctor ID</th>
+						<th>Nurse ID</th>
+                        <th>Action</th>
+                      </tr>
                       </tfoot>
                     </table>
                   </div>
@@ -30,7 +39,7 @@
                 <!-- /.box -->
               </div>
             </div>';
-  include('../master_DN.php');
+  include('../master_admin.php');
 ?>
 <!-- page script -->
 <script>
@@ -44,12 +53,12 @@
             for(var user in data){
                 response += "<tr>"+
                 "<td>"+data[user].name+"</td>"+
-				        "<td>"+data[user].phone+"</td>"+
+				"<td>"+data[user].phone+"</td>"+
                 "<td>"+((data[user].gender == 0)? "Male": "Female")+"</td>"+
                 "<td>"+data[user].health_condition+"</td>"+
-			        	"<td>"+data[user].doctor_id+"</td>"+
-			        	"<td>"+data[user].nurse_id+"</td>"+
-				        "<td><a href='update.php?id="+data[user].id+"'>Edit</a> | <a href='#' onClick=Remove('"+data[user].id+"')>Remove</a></td>"+
+				"<td>"+data[user].doctor_id+"</td>"+
+				"<td>"+data[user].nurse_id+"</td>"+
+				"<td><a href='update.php?id="+data[user].id+"'>Edit</a> | <a href='#' onClick=Remove('"+data[user].id+"')>Remove</a></td>"+
                 "</tr>";
             }
             $(response).appendTo($("#patients"));

@@ -57,7 +57,7 @@
                 </div>
               </div>';
               
-  include('../master.php');
+  include('../master_admin.php');
 ?>
 <script>
     $(document).ready(function(){

@@ -54,7 +54,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     // Bind result variables
                     mysqli_stmt_bind_result($stmt, $id, $email, $hashed_password);
                     if(mysqli_stmt_fetch($stmt)){
-						//echo "validating creds";
                         if(password_verify($password, $hashed_password)){
 							echo "validating creds1";
                             // Password is correct, so start a new session
@@ -63,18 +62,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
-                            $_SESSION["email"] = $email;                           
+                            $_SESSION["email"] = $email;                            
                             
                             // Redirect user to welcome page
                             header("Location: doctor/index.php");
                         } else{
                             // Display an error message if password is not valid
-                            $password_err = "Username or Password is incorrect";
+                            $password_err = "The password you entered was not valid.";
                         }
                     }
                 } else{
                     // Display an error message if email doesn't exist
-                    $email_err = "Username or Password is incorrect";
+                    $email_err = "No account found with that email.";
                 }
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -84,22 +83,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             mysqli_stmt_close($stmt);
         }
     }
-<<<<<<< Updated upstream
-    if(!empty($email_err) && !empty($password_err)){
-        echo $email_err;
-        echo "<br>";
-        echo $password_err;
-    }
-    else if (!empty($email_err)){
-        echo $email_err;
-    }
-    else if (!empty($password_err)){
-        echo $password_err;
-    }
-
-=======
-    echo $email_err;
->>>>>>> Stashed changes
+    
     // Close connection
     mysqli_close($link);
 }
@@ -113,51 +97,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       name="description"
       content="2021 UNR Senior Project Website for Group 14"
     />
-    <title>Group 14</title>
-    <style>
-      input[type="text"] {
-        padding: 10px;
-        margin: 10px 0;
-        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-        border-radius: 25px;
-      }
-      input[type="password"] {
-        padding: 10px;
-        margin: 10px 0;
-        box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
-        border-radius: 25px;
-      }
-    </style>
+	<link rel="stylesheet" href="style_login.css">
   </head>
   <body>
     <!--form class="input" action="test.php" method="post">-->
-<<<<<<< Updated upstream
-	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-      Email:
-      <input type="text" name="email" placeholder="email" class="form-control" />
-      <br />
-      Password:
-      <input type="password" name="password" placeholder="password" class="form-control"/><br />
-
-      <br />
-      <input type="submit" class="btn btn-primary" value="Login">
-    </form>
-=======
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 			<div class = "image-container">
 				<img src = "UNR_logo.png" alt = "Avatar" class = "avatar" width = "250" height = "250">
 			</div>
-            <div class = "project-title">
-                Cancer Detection Using Deep Neural Networks <br></div>
-            <div class = "project-subtitle">
-                UNR CSE Department, Spring 2021 <br>
-                </div>
 			<div class = "login-container">
 				<input type="text" name="email" placeholder="Enter Email" name = "email" required />
 				<input type="password" name="password" placeholder="Enter Password" name = "password" required />
 				<button type="submit">Login</button>
 			<div>
 		</form>
->>>>>>> Stashed changes
   </body>
 </html>

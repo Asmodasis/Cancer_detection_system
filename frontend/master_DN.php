@@ -120,6 +120,7 @@
               </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="../patient/create.php">Create Patient</a></li>
             <li><a href="../patient/index.php">Index Patients</a></li>
           </ul>
         </li>
@@ -146,7 +147,7 @@
     <section class="content-header">
       <h1>
         Dashboard
-        <small>Welcome to User Dashboard</small>
+        <small>Welcome to Admin Dashboard</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>cancerdetection</a></li>

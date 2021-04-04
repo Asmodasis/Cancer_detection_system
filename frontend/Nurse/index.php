@@ -7,7 +7,7 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
-                    <table id="nurses" class="table table-bordered table-hover" cellspacing="10">
+                    <table id="nurses" class="table table-bordered table-hover">
                       <thead>
                       <tr>
                         <th>Name</th>
@@ -19,6 +19,12 @@
                       <tbody>
                       </tbody>
                       <tfoot>
+                      <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                      </tr>
                       </tfoot>
                     </table>
                   </div>
@@ -27,7 +33,7 @@
                 <!-- /.box -->
               </div>
             </div>';
-  include('../master_DN.php');98
+  include('../master_admin.php');
 ?>
 <!-- page script -->
 <script>

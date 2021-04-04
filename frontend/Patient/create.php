@@ -1,4 +1,5 @@
 <?php 
+
   $content = '<div class="row">
                 <!-- left column -->
                 <div class="col-md-12">
@@ -38,10 +39,15 @@
                           <label for="exampleHealthCondition1">Health Condition</label>
                           <input type="text" class="form-control" id="health_condition" placeholder="Enter Health Condition">
                         </div>
+					
+						
                         <div class="form-group">
                           <label for="exampleDoctorID1">Doctor ID</label>
                           <input type="text" class="form-control" id="doctor_id" placeholder="Enter Doctor ID">
                         </div>
+						
+						
+						
                         <div class="form-group">
                           <label for="exampleNurseID1">Nurse ID</label>
                           <input type="text" class="form-control" id="nurse_id" placeholder="Enter Nurse ID">
@@ -56,7 +62,7 @@
                   <!-- /.box -->
                 </div>
               </div>';
-  include('../master.php');
+  include('../master_admin.php');
 ?>
 <script>
   function AddPatient(){
