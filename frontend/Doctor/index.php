@@ -35,6 +35,7 @@
                 <!-- /.box -->
               </div>
             </div>';
+
   include('../master_admin.php');
 ?>
 <!-- page script -->

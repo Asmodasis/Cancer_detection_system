@@ -27,7 +27,6 @@
                           <label for="exampleInputName1">Phone</label>
                           <input type="text" class="form-control" id="phone" placeholder="Enter Phone">
                         </div>
-
                       </div>
                       <!-- /.box-body -->
                       <div class="box-footer">
