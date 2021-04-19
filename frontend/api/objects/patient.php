@@ -1,6 +1,6 @@
 <?php
+
 class Patient{
- 
     // database connection and table name
     private $conn;
     private $table_name = "patients";
@@ -20,17 +20,42 @@ class Patient{
         $this->conn = $db;
     }
 
-    // read all patients
-    function read(){
-    
-        // select all query
-        $query = "SELECT
-                    `id`, `name`, `phone`, `gender`, `health_condition`, `doctor_id`, `nurse_id`, `created`
-                FROM
-                    " . $this->table_name . " 
-                ORDER BY
-                    id DESC";
-    
+    // read link patients
+    function read($sessionID, $sessionRole){
+		
+		// select all query for admin role
+		if($sessionRole == 1){
+			$query = "SELECT
+						`id`, `name`, `phone`, `gender`, `health_condition`, `doctor_id`, `nurse_id`, `created`
+					FROM
+						patients
+					ORDER BY
+						id DESC";
+		}
+		
+        // select all query for doctor role
+		if($sessionRole == 2){
+			$query = "SELECT
+						`id`, `name`, `phone`, `gender`, `health_condition`, `doctor_id`, `nurse_id`, `created`
+					FROM
+						patients
+					WHERE
+						doctor_id = '$sessionID'
+					ORDER BY
+						id DESC";
+		}
+		
+		// select all query for nurse role
+		if($sessionRole == 3){
+			$query = "SELECT
+						`id`, `name`, `phone`, `gender`, `health_condition`, `doctor_id`, `nurse_id`, `created`
+					FROM
+						patients
+					WHERE
+						nurse_id = '$sessionID'
+					ORDER BY
+						id DESC";
+		}
         // prepare query statement
         $stmt = $this->conn->prepare($query);
     

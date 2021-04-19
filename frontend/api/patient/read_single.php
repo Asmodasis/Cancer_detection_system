@@ -16,21 +16,32 @@ $patient->id = isset($_GET['id']) ? $_GET['id'] : die();
 // read the details of patient to be edited
 $stmt = $patient->read_single();
 
-if($stmt->rowCount() > 0){
-    // get retrieved row
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    // create array
-    $patient_arr=array(
-        "id" => $row['id'],
-        "name" => $row['name'],
-		"phone" => $row['phone'],
-		"gender" => $row['gender'],
-		"health_condition" => $row['health_conditon'],
-		"patient_id" => $row['patient_id'],
-		"nurse_id" => $row['nurse_id'],
-        "created" => $row['created']
-    );
+$num = $stmt->rowCount();
+// check if more than 0 record found
+if($num>0){
+ 
+    // patients array
+    $patients_arr=array();
+    $patients_arr["patients"]=array();
+ 
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        extract($row);
+        $patient_item=array(
+            "id" => $id,
+            "name" => $name,
+			"phone" => $phone,
+			"gender" => $gender,
+            "health_condition" => $health_condition,
+            "doctor_id" => $doctor_id,
+            "nurse_id" => $nurse_id,
+            "created" => $created
+        );
+        array_push($patients_arr["patients"], $patient_item);
+    }
+ 
+    echo json_encode($patients_arr["patients"]);
 }
-// make it json format
-print_r(json_encode($patient_arr));
+else{
+    echo json_encode(array());
+}
 ?>

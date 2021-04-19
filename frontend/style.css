@@ -13,12 +13,10 @@ body {
 }
 /*******************Top Of Page**************************/
 .container {
-	display:grid;
-	grid-template-columns: 1fr;
+
 }
 .wrapper-top {
 	display: flex;
-
 	padding: 10px;
 	align-items: center;
 	background-color: #C0C0C0;
@@ -36,10 +34,14 @@ body {
 .wrapper-left {
 	display:block;
 	margin-left: 40px;
-
 }
 .wrapper-top-left-lower-name{
-	margin-left: 20px;
+}
+
+.welcome-container {
+	float: right;
+	margin-left: 50px;
+	margin-top: 45px;
 }
 
 /*****************NAVIGATION BAR STYLING*****************/
@@ -132,7 +134,7 @@ body {
 .display-list {
 	background-color: white;
 	border-radius: 10px;
-	height: 400px;
+	height: 100%;
 	width: 85%;
 	border: 3px solid black;
 }
@@ -170,4 +172,44 @@ button:hover {
 .image-container {
 	text-align: center;
 	margin: 24px 0 12px 0;
+}
+/***********************User Display******************************/
+.single-patient{
+	position: relative;
+	height: 80%;
+}
+
+.patient-element {
+	width: 50%;
+	display: flex;
+}
+
+.action-menu {
+	margin-top: 50px;
+}
+
+.form-element {
+	display: flex;
+	width: 50%;
+}
+
+.form-note {
+	width: 50%;
+	height: 25%;
+}
+
+.image-note{
+	width: 40%;
+}
+
+.patient-images {
+	width: auto;
+	position: relative;
+	display: flex;
+}
+
+.patient-image-information {
+	display: block;
+	width: 50%;
+
 }

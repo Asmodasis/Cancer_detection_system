@@ -1,4 +1,5 @@
 <?php
+
   $content = '<div class="row">
                 <!-- left column -->
                 <div class="col-md-12">
@@ -11,23 +12,29 @@
                     <!-- form start -->
                     <form role="form">
                       <div class="box-body">
-                        <div class="form-group">
-                          <label for="exampleInputName1">Name</label>
-                          <input type="text" class="form-control" id="name" placeholder="Enter Name">
+					  
+                        <div class="form-element">
+                          <label for="exampleInputName1">Name: </label>
+							<div id="doctor-name">Name:</div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="email" placeholder="Enter email">
+						
+						
+                        <div class="form-element">
+                          <label for="exampleInputPhone1">Phone: </label>
+							<div id="doctor-phone">Phone:</div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="password" placeholder="Password">
+						
+						<div class="form-element">
+                          <label for="exampleInputName1">Email: </label>
+							<div id="doctor-email">Name:</div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleInputName1">Phone</label>
-                          <input type="text" class="form-control" id="phone" placeholder="Enter Phone">
+						
+						<div class="form-element">
+                          <label for="exampleInputName1">Password: </label>
+							<input name = "password" type = "password" class ="form-control" id = "password" placeholder = "Enter Password">
                         </div>
-                        <div class="form-group">
+						
+                        <div class="form-element">
                             <label for="exampleInputName1">Gender</label>
                             <div class="radio">
                                 <label>
@@ -42,9 +49,9 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleInputName1">Specialist</label>
-                          <input type="text" class="form-control" id="specialist" placeholder="Enter Specialization">
+                        <div class="form-element">
+                          <label for="exampleInputPhone1">Specialist: </label>
+							<div id="doctor-specialist">Phone:</div>
                         </div>
                       </div>
                       <!-- /.box-body -->
@@ -59,25 +66,26 @@
               
 	include('../master_admin.php');
 ?>
-<script>
-    $(document).ready(function(){
-        $.ajax({
-            type: "GET",
-            url: "../api/doctor/read_single.php?id=<?php echo $_GET['id']; ?>",
-            dataType: 'json',
-            success: function(data) {
-                $('#name').val(data['name']);
-                $('#email').val(data['email']);
-                $('#password').val(data['password']);
-                $('#phone').val(data['phone']);
-                $('#gender'+data['gender']).prop("checked", true);
-                $('#specialist').val(data['specialist']);
-            },
-            error: function (result) {
-                console.log(result);
-            },
-        });
+ <script>
+  $(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "../api/doctor/read_single.php?id=<?php echo $_GET['id']; ?>",
+        dataType: 'json',
+        success: function(data) {
+            var response="";
+            for(var user in data){
+				$("#doctor-name").html('<input name = "name" type = "text" class ="form-control" id = "name" value="'+data[user].name+'">');
+				$("#doctor-phone").html('<input name = "phone" type = "text" class = "form-control" id = "phone" value="'+data[user].phone+'">');
+				$("#doctor-specialist").html('<input name = "specialist" type = "text" class ="form-control" id ="specialist" value="'+data[user].specialist+'">');
+				$("#doctor-email").html('<input name = "email" type = "text" class ="form-control" id = "email" value="'+data[user].email+'">');
+				$("#doctor-password").html('<input name = "password" type = "password" class ="form-control" id = "password" value="'+data[user].password+'">');
+            }
+        }
     });
+  });
+ </script>
+<script>
     function UpdateDoctor(){
         $.ajax(
         {

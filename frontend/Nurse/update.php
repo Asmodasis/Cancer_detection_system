@@ -1,4 +1,5 @@
 <?php
+
   $content = '<div class="row">
                 <!-- left column -->
                 <div class="col-md-12">
@@ -11,22 +12,27 @@
                     <!-- form start -->
                     <form role="form">
                       <div class="box-body">
-                        <div class="form-group">
-                          <label for="exampleInputName1">Name</label>
-                          <input type="text" class="form-control" id="name" placeholder="Enter Name">
+					  
+                        <div class="form-element">
+                          <label for="exampleInputName1">Name: </label>
+							<div id="nurse-name">Name:</div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="email" placeholder="Enter email">
+						
+                        <div class="form-element">
+                          <label for="exampleInputName1">Email: </label>
+							<div id="nurse-email">Email:</div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="password" placeholder="Password">
+						
+                        <div class="form-element">
+                          <label for="exampleInputName1">Phone: </label>
+							<div id="nurse-phone">Name:</div>
                         </div>
-                        <div class="form-group">
-                          <label for="exampleInputName1">Phone</label>
-                          <input type="text" class="form-control" id="phone" placeholder="Enter Phone">
+						
+						<div class="form-element">
+                          <label for="exampleInputName1">Password: </label>
+							<input name = "password" type = "password" class ="form-control" id = "password" placeholder = "Enter Password">
                         </div>
+						
                       </div>
                       <!-- /.box-body -->
                       <div class="box-footer">
@@ -40,23 +46,25 @@
               
   include('../master_admin.php');
 ?>
-<script>
-    $(document).ready(function(){
-        $.ajax({
-            type: "GET",
-            url: "../api/nurse/read_single.php?id=<?php echo $_GET['id']; ?>",
-            dataType: 'json',
-            success: function(data) {
-                $('#name').val(data['name']);
-                $('#email').val(data['email']);
-                $('#password').val(data['password']);
-                $('#phone').val(data['phone']);
-            },
-            error: function (result) {
-                console.log(result);
-            },
-        });
+ <script>
+  $(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "../api/nurse/read_single.php?id=<?php echo $_GET['id']; ?>",
+        dataType: 'json',
+        success: function(data) {
+            var response="";
+            for(var user in data){
+				$("#nurse-name").html('<input name = "name" type = "text" class ="form-control" id = "name" value="'+data[user].name+'">');
+				$("#nurse-phone").html('<input name = "phone" type = "text" class = "form-control" id = "phone" value="'+data[user].phone+'">');
+				$("#nurse-email").html('<input name = "email" type = "text" class ="form-control" id = "email" value="'+data[user].email+'">');
+				$("#nurse-password").html('<input name = "password" type = "password" class ="form-control" id = "password" value="'+data[user].password+'">');
+            }
+        }
     });
+  });
+ </script>
+<script>
     function UpdateNurse(){
         $.ajax(
         {

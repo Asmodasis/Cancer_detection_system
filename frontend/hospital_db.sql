@@ -14,13 +14,13 @@ CREATE TABLE `admins` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `phone` varchar(15) NOT NULL,
-  `role` bit NOT NULL,
+  `role` tinyint NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `phone`, `role`, `created`) VALUES
-(1, 'admin', 'mhernandez@nevada.unr.edu', 'admin1', '17148334897', '1', '2020-11-21 13:12:18');
+(1, 'admin', 'admin@gmail.com', '$2y$10$BwEl8z7S9gcHbqFQIvAyd.8O.TshpLLvdBbpXYEIZtQIobYvvDCPy', '17148334897', '1', '2020-11-21 13:12:18');
 -- --------------------------------------------------------
 --
 -- Table structure for table `doctors`
@@ -32,14 +32,14 @@ CREATE TABLE `doctors` (
   `password` varchar(255) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `specialist` varchar(255) NOT NULL,
-  `role` bit NOT NULL,
+  `role` tinyint NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Create first doctor into doctors table
 --
 INSERT INTO `doctors` (`id`, `name`, `email`, `password`, `phone`, `specialist`, `role`,`created`) VALUES
-(1, 'Test Doctor', 'testdoctor@gmail.com', 'password', '17758888886', 'Heart', '0', '2020-11-21 13:12:18');
+(1, 'Test Doctor', 'testdoctor@gmail.com', '$2y$10$BwEl8z7S9gcHbqFQIvAyd.8O.TshpLLvdBbpXYEIZtQIobYvvDCPy', '17758888886', 'Heart', '2', '2020-11-21 13:12:18');
 -- --------------------------------------------------------
 --
 -- Table structure for table `nurses`
@@ -57,7 +57,7 @@ CREATE TABLE `nurses` (
 -- Create first nurse into nurse table
 --
 INSERT INTO `nurses` (`id`, `name`, `email`, `password`, `phone`, `role`, `created`) VALUES
-(1, 'Test Nurse', 'testnurse@gmail.com', 'password', '17758888887', '0', '2020-11-21 13:12:18');
+(1, 'Test Nurse', 'testnurse@gmail.com', '$2y$10$BwEl8z7S9gcHbqFQIvAyd.8O.TshpLLvdBbpXYEIZtQIobYvvDCPy', '17758888887', '3', '2020-11-21 13:12:18');
 -- --------------------------------------------------------
 --
 -- Table structure for table `patients`
@@ -77,6 +77,19 @@ CREATE TABLE `patients` (
 --
 INSERT INTO `patients` (`id`, `name`, `phone`, `gender`, `health_condition`, `doctor_id`, `nurse_id`, `created`) VALUES
 (1, 'Test Patient', '17758888888', 1, 'Breast Cancer', 1, 1, '2020-11-21 13:12:18');
+-- --------------------------------------------------------
+--
+-- Table structure for table `images`
+--
+CREATE TABLE `images` (
+  `id` int(11) NOT NULL,
+  `patient_id` int(11) NOT NULL,
+  `note` varchar(255) NOT NULL,
+  `cancerous` tinyint NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -103,6 +116,13 @@ ALTER TABLE `patients`
   ADD KEY `doctor_id` (`doctor_id`),
   ADD KEY `nurse_id` (`nurse_id`);
 --
+--
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `patient_id` (`patient_id`);
+--
 -- AUTO_INCREMENT for dumped tables
 --
 --
@@ -126,6 +146,11 @@ ALTER TABLE `nurses`
 ALTER TABLE `patients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 --
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+--
 -- Constraints for dumped tables
 --
 --
@@ -134,4 +159,9 @@ ALTER TABLE `patients`
 ALTER TABLE `patients`
   ADD CONSTRAINT `patients_ibfk_1` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`id`),
   ADD CONSTRAINT `patients_ibfk_2` FOREIGN KEY (`nurse_id`) REFERENCES `nurses` (`id`);
+ --
+-- Constraints for table `images`
+--
+ALTER TABLE `images`
+  ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`);
 COMMIT;
