@@ -15,7 +15,7 @@ $nurse = new nurse($db);
 $nurse->id = $_POST['id'];
 $nurse->name = $_POST['name'];
 $nurse->email = $_POST['email'];
-$nurse->password = base64_encode($_POST['password']);
+$nurse->password = password_hash(($_POST['password']),PASSWORD_DEFAULT);
 $nurse->phone = $_POST['phone'];
 
  

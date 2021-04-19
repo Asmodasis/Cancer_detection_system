@@ -31,12 +31,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{
         $password = trim($_POST["password"]);
     }
-    
+	
+    $emailaccount = $_POST["email"];
+	
+	//Check for Admin role
+	$results = mysqli_query($link, "SELECT role FROM admin WHERE email = '$emailaccount'");
+	$results = mysqli_fetch_array($results, MYSQLI_ASSOC);
+	if($results['role'] == 3){
+		$role = "nurse";}
+		
+	//Check for Doctor role
+	$results = mysqli_query($link, "SELECT role FROM doctors WHERE email = '$emailaccount'");
+	$results = mysqli_fetch_array($results, MYSQLI_ASSOC);
+	if($results['role'] == 2){
+		$role = "doctor";}
+	
+	//Check for Nurse role
+	$results = mysqli_query($link, "SELECT role FROM nurses WHERE email = '$emailaccount'");
+	$results = mysqli_fetch_array($results, MYSQLI_ASSOC);
+	if($results['role'] == 3){
+		$role = "nurse";}
+		
+	
+
+
+	
+	
+	
     // Validate credentials
     if(empty($email_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, email, password FROM doctors WHERE email = ?";
-        
+		if($role == "doctor"){
+        $sql = "SELECT id, email, password, name, role FROM doctors WHERE email = ?";}
+		else if($role == "nurse"){
+        $sql = "SELECT id, email, password, name, role FROM nurses WHERE email = ?";}
+		else if($role == "admin"){
+        $sql = "SELECT id, email, password, name, role FROM admin WHERE email = ?";}
+		
+		
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_email);
@@ -52,10 +84,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Check if email exists, if yes then verify password
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $email, $hashed_password);
+                    mysqli_stmt_bind_result($stmt, $id, $email, $hashed_password, $name, $role);
                     if(mysqli_stmt_fetch($stmt)){
                         if(password_verify($password, $hashed_password)){
-							echo "validating creds1";
                             // Password is correct, so start a new session
                             session_start();
                             
@@ -63,7 +94,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["email"] = $email;                            
-                            
+                            $_SESSION["name"] = $name;
+							$_SESSION["role"] = $role;
                             // Redirect user to welcome page
                             header("Location: doctor/index.php");
                         } else{

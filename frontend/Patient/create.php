@@ -1,5 +1,4 @@
 <?php 
-
   $content = '<div class="row">
                 <!-- left column -->
                 <div class="col-md-12">
@@ -34,36 +33,65 @@
                                 Female
                                 </label>
                             </div>
+							
+							<div class="form-group">
+								<label for="exampleDoctorID1">Doctor Name</label>
+								<select id = "doctor_id">
+								</select>
+							</div>
+							
+							<div class="form-group">
+								<label for="exampleNurseID1">Nurse Name</label>
+									<select id = "nurse_id">
+							</select>
+							</div>
 						</div>
 						<div class="form-group">
                           <label for="exampleHealthCondition1">Health Condition</label>
                           <input type="text" class="form-control" id="health_condition" placeholder="Enter Health Condition">
                         </div>
-					
-						
-                        <div class="form-group">
-                          <label for="exampleDoctorID1">Doctor ID</label>
-                          <input type="text" class="form-control" id="doctor_id" placeholder="Enter Doctor ID">
-                        </div>
-						
-						
-						
-                        <div class="form-group">
-                          <label for="exampleNurseID1">Nurse ID</label>
-                          <input type="text" class="form-control" id="nurse_id" placeholder="Enter Nurse ID">
-                        </div>
-                      </div>
-                      <!-- /.box-body -->
-                      <div class="box-footer">
-                        <input type="button" class="btn btn-primary" onClick="AddPatient()" value="Submit"></input>
-                      </div>
                     </form>
                   </div>
+				  <div class="box-footer">
+                        <input type="button" class="btn btn-primary" onClick="AddPatient()" value="Submit"></input>
+                      </div>
                   <!-- /.box -->
                 </div>
               </div>';
   include('../master_admin.php');
 ?>
+ <script>
+  $(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "../api/doctor/read.php",
+        dataType: 'json',
+        success: function(data) {
+            var response="";
+            for(var user in data){
+				response +=
+				'<option value="'+data[user].id+'">'+data[user].id+'-'+data[user].name+'</option>';
+            }$(response).appendTo($("#doctor_id"));
+        }
+    });
+  });
+ </script>
+ <script>
+  $(document).ready(function(){
+    $.ajax({
+        type: "GET",
+        url: "../api/nurse/read.php",
+        dataType: 'json',
+        success: function(data) {
+            var response="";
+            for(var user in data){
+				response +=
+				'<option value="'+data[user].id+'">'+data[user].id+'-'+data[user].name+'</option>';
+            }$(response).appendTo($("#nurse_id"));
+        }
+    });
+  });
+ </script>
 <script>
   function AddPatient(){
 
@@ -94,4 +122,6 @@
             }
         });
     }
+
 </script>
+
