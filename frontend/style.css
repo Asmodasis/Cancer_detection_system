@@ -12,24 +12,30 @@ body {
 body {
 	height: auto;
 	width: auto;
-	background-color: #8d9093;
+	background-color: #eee;
 	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
 }
 
 #main {
 	margin-left: 200px; /* Same as the width of the sidenav */
-	padding: 0px 10px;
+	padding: 0px 00px;
 }
 /*******************Top Of Page**************************/
 .container {
-
+	width: 1400px;
+	max-width:90%;
+	background-color: #fff;
+	padding: 35px;
 }
+
 .wrapper-top {
 	display: flex;
-	padding: 10px;
+	padding: 0px;
 	align-items: center;
-	background-color: #C0C0C0;
-	border-radius: 10px;
+	background-color: #fff;
+	border-radius: 0px;
+	margin-bottom: 40px;
 }
 
 .wrapper-top-left-logo {
@@ -38,6 +44,7 @@ body {
 .wrapper-top-left-main-name {
 	margin-right: 125px;
 	font-size: 40px;
+	font-weight: bold;
 }
 
 .wrapper-left {
@@ -64,14 +71,14 @@ body {
   left: 0;
   background-color: #00214d;
   overflow-x: hidden;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 
 .navbar a{
-  padding: 6px 18px 6px 16px;
+  padding: 0px 18px 15px 16px;
   text-decoration: none;
-  font-size: 15px;
-  color: black;
+  font-size: 17px;
+  color: #333;
   display: block;
   border: none;
   background: none;
@@ -82,10 +89,10 @@ body {
   
 }
 .dropdown-button{
-	padding: 6px 18px 6px 16px;
+	padding: 10px 18px 10px 16px;
 	text-decoration: none;
-	font-size: 20px;
-	color: #818181;
+	font-size: 22px;
+	color: #ccc;
 	display: block;
 	border: none;
 	background: none;
@@ -96,13 +103,16 @@ body {
 }
 /* On mouse-over */
 .navbar a:hover, .dropdown-button:hover {
-  color: #f1f1f1;
+  /*font-weight: bold;*/
+  opacity: 1.0;
 }
 
-.navbar a:hover{
-	color: #f1f1f1;
+.dropdown-button:hover{
+	color: #fff;
 }
-
+.navbar a:hover {
+	color: #000;
+}
 .fa-caret-down {
   float: right;
 }
@@ -112,15 +122,16 @@ body {
 	display: none;
 	background-color: #C0C0C0;
 	padding-left: 8px;
+	padding-top: 20px;
 	font-size: 5px;
 
 }
 
 .logout-container a{
-	padding: 6px 18px 6px 16px;
+	padding: 10px 18px 10px 16px;
 	text-decoration: none;
 	font-size: 20px;
-	color: #818181;
+	color: #ccc;
 	display: block;
 	border: none;
 	background: none;
@@ -142,12 +153,18 @@ body {
 /**************************DISPLAY LIST STYLING******************************/
 .display-list {
 	background-color: white;
-	border-radius: 10px;
+	border-radius: 0px;
 	height: 100%;
-	width: 85%;
-	border: 3px solid black;
+	width: 100%;
+	border: none;
 }
 
+.box > * {
+	margin-bottom: 20px;
+}
+#output {
+	margin-top: -10px;
+}
 .box-header {
 
 }
@@ -156,6 +173,20 @@ body {
 
 }
 
+.box-body{
+	text-align: left;
+}
+
+table > * {
+	height: 30px;
+}
+
+th {
+	padding-right: 30px;
+}
+td {
+	padding-right: 30px;
+}
 /*****************************LOGIN PAGE*************************************/
 input[type=text], input[type=password] {
 	
@@ -196,7 +227,13 @@ button:hover {
 .action-menu {
 	margin-top: 50px;
 }
-
+.form-group {
+	margin-bottom: 0px;
+}
+.form-group label {
+	margin-bottom: 20px;
+	display: inline-block;
+}
 .form-element {
 	display: flex;
 	width: 50%;
