@@ -1,4 +1,9 @@
 <?php
+// Initialize the session
+session_start();
+// Include config file
+require "../../config.php";
+
 // include database and object files
 include_once '../config/database.php';
 include_once '../objects/patient.php';
@@ -11,7 +16,7 @@ $db = $database->getConnection();
 $patient = new Patient($db);
  
 // query patient
-$stmt = $patient->read();
+$stmt = $patient->read($_SESSION['id'], $_SESSION['role']);
 $num = $stmt->rowCount();
 // check if more than 0 record found
 if($num>0){

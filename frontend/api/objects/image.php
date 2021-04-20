@@ -1,31 +1,33 @@
 <?php
-class Doctor{
- 
+
+class Image{
     // database connection and table name
     private $conn;
-    private $table_name = "doctors";
+    private $table_name = "images";
  
     // object properties
     public $id;
-    public $name;
-    public $email;
-    public $password;
-    public $phone;
-    public $specialist;
+    public $patient_id;
+	public $note;
+    public $cancerous;
+	public $url;
     public $created;
  
     // constructor with $db as database connection
     public function __construct($db){
         $this->conn = $db;
     }
-    // read all doctors
-    function read(){
+
+    // read linked notes
+    function read($var){
     
         // select all query
         $query = "SELECT
-                    `id`, `name`, `email`, `password`, `phone`, `specialist`, `created`
+                    `id`, `patient_id`, `note`, `cancerous`, `url`, `created`
                 FROM
-                    " . $this->table_name . " 
+                    images
+				WHERE
+					patient_id = '$var'
                 ORDER BY
                     id DESC";
     
@@ -37,13 +39,13 @@ class Doctor{
     
         return $stmt;
     }
-	
-    // get single doctor data
+
+    // get single patient data
     function read_single(){
     
         // select all query
         $query = "SELECT
-                    `id`, `name`, `email`, `password`, `phone`, `specialist`, `created`
+                    `id`, `patient_id`, `note`, `cancerous`, `url`, `created`
                 FROM
                     " . $this->table_name . " 
                 WHERE
@@ -56,19 +58,19 @@ class Doctor{
         $stmt->execute();
         return $stmt;
     }
-	
-    // create doctor
+
+    // create patient
     function create(){
     
-        if($this->isAlreadyExist()){
+        /*if($this->isAlreadyExist()){
             return false;
-        }
+        }*/
         
         // query to insert record
         $query = "INSERT INTO  ". $this->table_name ." 
-                        (`name`, `email`, `password`, `phone`, `specialist`, `created`)
+                        (`patient_id`, `note`, `cancerous`, `url`, `created`)
                   VALUES
-                        ('".$this->name."', '".$this->email."', '".$this->password."', '".$this->phone."', '".$this->specialist."', '".$this->created."')";
+                        ('".$this->patient_id."', '".$this->note."', '".$this->cancerous."', '".$this->url."', '".$this->created."')";
     
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -78,16 +80,18 @@ class Doctor{
             $this->id = $this->conn->lastInsertId();
             return true;
         }
+
         return false;
     }
-    // update doctor 
+
+    // update patient 
     function update(){
     
         // query to insert record
         $query = "UPDATE
                     " . $this->table_name . "
                 SET
-                    name='".$this->name."', email='".$this->email."', password='".$this->password."', phone='".$this->phone."', specialist='".$this->specialist."'
+                    patient_id='".$this->patient_id."', note='".$this->note."', cancerous='".$this->cancerous."', url='".$this->url."', created='".$this->created."'
                 WHERE
                     id='".$this->id."'";
     
@@ -99,7 +103,8 @@ class Doctor{
         }
         return false;
     }
-    // delete doctor
+
+    // delete patient
     function delete(){
         
         // query to insert record
@@ -117,21 +122,25 @@ class Doctor{
         }
         return false;
     }
+/*
     function isAlreadyExist(){
         $query = "SELECT *
             FROM
                 " . $this->table_name . " 
             WHERE
                 email='".$this->name."'";
+
         // prepare query statement
         $stmt = $this->conn->prepare($query);
+
         // execute query
         $stmt->execute();
+
         if($stmt->rowCount() > 0){
             return true;
         }
         else{
             return false;
         }
-    }
+    }*/
 }

@@ -1,0 +1,224 @@
+/*Master style sheet for Cancer Detection Page*/
+
+body {
+	height: auto;
+	width: auto;
+	background-color: #8d9093;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Master style sheet for Cancer Detection Page*/
+
+body {
+	height: auto;
+	width: auto;
+	background-color: #8d9093;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#main {
+	margin-left: 200px; /* Same as the width of the sidenav */
+	padding: 0px 10px;
+}
+/*******************Top Of Page**************************/
+.container {
+
+}
+.wrapper-top {
+	display: flex;
+	padding: 10px;
+	align-items: center;
+	background-color: #C0C0C0;
+	border-radius: 10px;
+}
+
+.wrapper-top-left-logo {
+	float: left;
+}
+.wrapper-top-left-main-name {
+	margin-right: 125px;
+	font-size: 40px;
+}
+
+.wrapper-left {
+	display:block;
+	margin-left: 40px;
+}
+.wrapper-top-left-lower-name{
+}
+
+.welcome-container {
+	float: right;
+	margin-left: 50px;
+	margin-top: 45px;
+}
+
+/*****************NAVIGATION BAR STYLING*****************/
+/*Controls the navbar. */
+.navbar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #00214d;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.navbar a{
+  padding: 6px 18px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: black;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  
+}
+.dropdown-button{
+	padding: 6px 18px 6px 16px;
+	text-decoration: none;
+	font-size: 20px;
+	color: #818181;
+	display: block;
+	border: none;
+	background: none;
+	width: 100%;
+	text-align: left;
+  `	cursor: pointer;
+	outline: none;
+}
+/* On mouse-over */
+.navbar a:hover, .dropdown-button:hover {
+  color: #f1f1f1;
+}
+
+.navbar a:hover{
+	color: #f1f1f1;
+}
+
+.fa-caret-down {
+  float: right;
+}
+
+
+.dropdown-container {
+	display: none;
+	background-color: #C0C0C0;
+	padding-left: 8px;
+	font-size: 5px;
+
+}
+
+.logout-container a{
+	padding: 6px 18px 6px 16px;
+	text-decoration: none;
+	font-size: 20px;
+	color: #818181;
+	display: block;
+	border: none;
+	background: none;
+	width: 100%;
+	text-align: left;
+  `	cursor: pointer;
+	outline: none;
+	margin-top: 200px;
+	position: absolute;
+	bottom:35px;
+}
+
+
+@media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
+}
+
+/**************************DISPLAY LIST STYLING******************************/
+.display-list {
+	background-color: white;
+	border-radius: 10px;
+	height: 100%;
+	width: 85%;
+	border: 3px solid black;
+}
+
+.box-header {
+
+}
+
+.box-title {
+
+}
+
+/*****************************LOGIN PAGE*************************************/
+input[type=text], input[type=password] {
+	
+}
+}
+
+button {
+	background-color: #C0C0C0;
+	color: white;
+	padding: 14px 20px;
+	margin-left: 30%;
+	border: none;
+	cursor: pointer;
+	width: 40%;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+.container-login {
+	padding: 24px;
+}
+.image-container {
+	text-align: center;
+	margin: 24px 0 12px 0;
+}
+/***********************User Display******************************/
+.single-patient{
+	position: relative;
+	height: 80%;
+}
+
+.patient-element {
+	width: 50%;
+	display: flex;
+}
+
+.action-menu {
+	margin-top: 50px;
+}
+
+.form-element {
+	display: flex;
+	width: 50%;
+}
+
+.form-note {
+	width: 50%;
+	height: 25%;
+}
+
+.image-note{
+	width: 40%;
+}
+
+.patient-images {
+	width: auto;
+	position: relative;
+	display: flex;
+}
+
+.patient-image-information {
+	display: block;
+	width: 50%;
+
+}

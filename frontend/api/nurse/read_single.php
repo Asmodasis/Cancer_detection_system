@@ -16,19 +16,30 @@ $nurse->id = isset($_GET['id']) ? $_GET['id'] : die();
 // read the details of nurse to be edited
 $stmt = $nurse->read_single();
 
-if($stmt->rowCount() > 0){
-    // get retrieved row
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    // create array
-    $nurse_arr=array(
-        "id" => $row['id'],
-        "name" => $row['name'],
-        "email" => $row['email'],
-        "password" => $row['password'],
-        "phone" => $row['phone'],
-        "created" => $row['created']
-    );
+$num = $stmt->rowCount();
+// check if more than 0 record found
+if($num>0){
+ 
+    // nurses array
+    $nurses_arr=array();
+    $nurses_arr["nurses"]=array();
+ 
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        extract($row);
+        $nurse_item=array(
+            "id" => $id,
+            "name" => $name,
+			"email" => $email,
+            "password" => $password,
+			"phone" => $phone,
+            "created" => $created
+        );
+        array_push($nurses_arr["nurses"], $nurse_item);
+    }
+ 
+    echo json_encode($nurses_arr["nurses"]);
 }
-// make it json format
-print_r(json_encode($nurse_arr));
+else{
+    echo json_encode(array());
+}
 ?>

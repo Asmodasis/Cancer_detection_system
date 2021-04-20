@@ -1,4 +1,5 @@
-<?php 
+<?php
+
   $content = '<div class="row">
                 <!-- left column -->
                 <div class="col-md-12">
@@ -42,7 +43,8 @@
                   <!-- /.box -->
                 </div>
               </div>';
-  include('../master_DN.php');
+
+  include('../master_admin.php');
 ?>
 <script>
   function AddDoctor(){

@@ -27,7 +27,6 @@
                           <label for="exampleInputName1">Phone</label>
                           <input type="text" class="form-control" id="phone" placeholder="Enter Phone">
                         </div>
-
                       </div>
                       <!-- /.box-body -->
                       <div class="box-footer">
@@ -38,7 +37,7 @@
                   <!-- /.box -->
                 </div>
               </div>';
-  include('../master_DN.php');
+  include('../master_admin.php');
 ?>
 <script>
   function AddNurse(){

@@ -7,30 +7,40 @@ include_once '../objects/doctor.php';
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare nurse object
-$doctor = new Doctor($db);
+// prepare doctor object
+$doctor = new doctor($db);
 
-// set ID property of nurse to be edited
+// set ID property of doctor to be edited
 $doctor->id = isset($_GET['id']) ? $_GET['id'] : die();
 
-// read the details of nurse to be edited
+// read the details of doctor to be edited
 $stmt = $doctor->read_single();
 
-if($stmt->rowCount() > 0){
-    // get retrieved row
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    // create array
-    $doctor_arr=array(
-        "id" => $row['id'],
-        "name" => $row['name'],
-        "email" => $row['email'],
-        "password" => $row['password'],
-        "phone" => $row['phone'],
-		"speciality" => $row['speciality'],
-		"role" => $row['role'],
-        "created" => $row['created']
-    );
+$num = $stmt->rowCount();
+// check if more than 0 record found
+if($num>0){
+ 
+    // doctors array
+    $doctors_arr=array();
+    $doctors_arr["doctors"]=array();
+ 
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        extract($row);
+        $doctor_item=array(
+            "id" => $id,
+            "name" => $name,
+			"email" => $email,
+			"password" => $password,
+			"phone" => $phone,
+			"specialist" => $specialist,
+            "created" => $created
+        );
+        array_push($doctors_arr["doctors"], $doctor_item);
+    }
+ 
+    echo json_encode($doctors_arr["doctors"]);
 }
-// make it json format
-print_r(json_encode($doctor_arr));
+else{
+    echo json_encode(array());
+}
 ?>

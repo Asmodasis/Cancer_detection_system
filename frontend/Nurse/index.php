@@ -1,4 +1,5 @@
 <?php
+
   $content = '<div class="row">
                 <div class="col-xs-12">
                 <div class="box">
@@ -33,7 +34,7 @@
                 <!-- /.box -->
               </div>
             </div>';
-  include('../master_DN.php');98
+  include('../master_admin.php');
 ?>
 <!-- page script -->
 <script>
