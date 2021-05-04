@@ -1,23 +1,21 @@
 
- # Product Name
-> Cancer Detection using Deep Neural Networks
+ # Cancer Detection using Deep Neural Networks
+> Using neural networks to detect cancer in patients, providing a clean interface for doctors to interact with.
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-This software is designed to be an interface for doctors to interface with medical classification networks for use in cancer diagnosis. The software currently is demostrated using a deep Neural network trained for classificaiton of breast cancer images.
-
-This Software is as is. There may be more commit's in the future but is not to be expected. Any undetected bugs may not be fixed.
+This software is designed to be an interface for doctors to interface with medical classification networks for use in cancer diagnosis. The software currently is demostrated using a deep Neural network trained for classification of breast cancer images.
 
 ![](header.png)
 
 ## Installation
 
-> Install XAMPP for a localwebserver and navigate to the directory it is installed. [https://www.apachefriends.org/download.html]
-> Clone the repo and place it inside the htdocs directory of XAMPP.
-> Start XAMPP Control Panel and enable Apache and MySQl
-> Type http://localhost/<..>/src/frontend/ into the browser. When <..> is an extra directories the repo may be in.
+> Install XAMPP for a localwebserver and navigate to the directory it is installed. [https://www.apachefriends.org/download.html]  
+> Clone the repo and place it inside the htdocs directory of XAMPP.  
+> Start XAMPP Control Panel and enable Apache and MySQl  
+> Type http://localhost/<..>/src/frontend/ into the browser. When <..> is an extra directories the repo may be in.  
 
 ## Usage example
 
@@ -66,10 +64,10 @@ npm install @tensorflow/tfjs
 
 ## Meta
 
-Shawn Ray - Asmodasis@gmail.com
-Christian Greenman
-Ethan Brown
-Miguel Hernandez
+Shawn Ray - Asmodasis@gmail.com  
+Christian Greenman  
+Ethan Brown  
+Miguel Hernandez  
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
